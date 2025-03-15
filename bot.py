@@ -4,8 +4,8 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.types import Message
 from flask import Flask, request
 
-TOKEN = "7922842008:AAHOchyo_fiOhaq1-7D1Ud7HSKn2rEvp6mA"  # Ganti dengan token bot kamu
-WEBHOOK_URL = WEBHOOK_URL = "https://yourdomain.com/webhook"  # Ganti dengan URL Webhook (nanti kita buat)
+TOKEN = "1234567890:ABCDEF1234567890abcdef1234567890"  # Ganti dengan token bot kamu
+WEBHOOK_URL = "https://your-repl.repl.co/webhook"  # Ganti dengan URL Replit nanti
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
@@ -22,9 +22,9 @@ async def start_command(message: Message):
 @dp.message_handler(commands=['klaim'])
 async def klaim_freebet(message: Message):
     user_id = message.from_user.id
-    await message.answer(f"🔍 Sedang memproses klaim Anda...\nSilakan buka link ini untuk verifikasi: https://yourdomain.com/klaim?user_id={user_id}")
+    await message.answer(f"🔍 Sedang memproses klaim Anda...\nSilakan buka link ini untuk verifikasi: https://your-repl.repl.co/klaim?user_id={user_id}")
 
-# Jalankan bot dengan Webhook
+# Webhook Flask
 app = Flask(__name__)
 
 @app.route("/webhook", methods=["POST"])
@@ -34,4 +34,4 @@ def webhook():
     return "OK", 200
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=8080)
